@@ -6,6 +6,51 @@
   <title>Moustapha LO - Business Analyst</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .certification-image {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .certification-image:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans leading-relaxed tracking-wide">
   <!-- Navigation -->
@@ -88,25 +133,30 @@
     </section>
 
     <!-- Section Certifications -->
-    <section id="certifications" class="mb-16">
-      <h2 class="text-3xl font-semibold mb-6 text-center">Certifications</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <img src="assets/img/certification Dataiku Core designer Certificate.jpg" alt="Certification Dataiku Core Designer" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="font-bold text-lg text-center">Dataiku Core Designer</h3>
+    <section id="certifications" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12">Certifications</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="assets/img/certification Dataiku Core designer Certificate.jpg" alt="Certification Dataiku Core Designer" class="w-full h-48 object-cover certification-image" onclick="openModal(this.src)">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Dataiku Core Designer</h3>
+              <p class="text-gray-600">Certification en conception de projets Data Science</p>
+            </div>
           </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <img src="assets/img/certification Dataiku ML Practitioner.jpg" alt="Certification Dataiku ML Practitioner" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="font-bold text-lg text-center">Dataiku ML Practitioner</h3>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="assets/img/certification Dataiku ML Practitioner.jpg" alt="Certification Dataiku ML Practitioner" class="w-full h-48 object-cover certification-image" onclick="openModal(this.src)">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Dataiku ML Practitioner</h3>
+              <p class="text-gray-600">Certification en Machine Learning</p>
+            </div>
           </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <img src="assets/img/certification Datacamp Power BI.PNG" alt="Certification Datacamp Power BI" class="w-full h-48 object-cover">
-          <div class="p-4">
-            <h3 class="font-bold text-lg text-center">Datacamp Power BI</h3>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="assets/img/certification Datacamp Power BI.PNG" alt="Certification Datacamp Power BI" class="w-full h-48 object-cover certification-image" onclick="openModal(this.src)">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Datacamp Power BI</h3>
+              <p class="text-gray-600">Certification en visualisation de données avec Power BI</p>
+            </div>
           </div>
         </div>
       </div>
@@ -129,8 +179,39 @@
     </section>
   </main>
 
+  <!-- Modal -->
+  <div id="certificationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="Certification en grand format">
+    </div>
+  </div>
+
   <footer class="text-center py-6 text-sm text-gray-500 bg-white mt-12">
     © 2025 Moustapha LO. Tous droits réservés.
   </footer>
+
+  <script>
+    // Modal functionality
+    function openModal(imageSrc) {
+      const modal = document.getElementById('certificationModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'flex';
+      modalImg.src = imageSrc;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('certificationModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+      const modal = document.getElementById('certificationModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
