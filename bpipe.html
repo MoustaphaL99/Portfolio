@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B:PIPE - Moustapha LO</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans leading-relaxed tracking-wide">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">← Retour au portfolio</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-12 max-w-4xl">
+    <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="relative">
+        <img id="bpipe-carousel-image" src="assets/img/BPIPE 1.PNG" alt="Interface B:PIPE" class="w-full h-96 object-cover">
+        <button id="bpipe-prev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 rounded-full w-10 h-10 shadow flex items-center justify-center transition" aria-label="Image précédente">‹</button>
+        <button id="bpipe-next" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 rounded-full w-10 h-10 shadow flex items-center justify-center transition" aria-label="Image suivante">›</button>
+      </div>
+
+      <div class="p-8">
+        <h1 class="text-3xl font-bold mb-6">B:PIPE</h1>
+
+        <div class="prose max-w-none">
+          <p class="text-sm text-gray-600 mb-6">Chef de projet IA - Optimisation de la performance commerciale</p>
+
+          <p class="text-lg text-gray-600 mb-6">
+            Dans le cadre de mon alternance au sein d'une entreprise de développement durable, j'ai piloté en autonomie un projet IA visant à optimiser le processus commercial. J'ai conçu une plateforme centralisant plusieurs leviers à forte valeur ajoutée : détection d'opportunités d'upsell, génération de nouveaux leads, transcription automatique de rendez-vous (via Whisper), enrichissement d'informations stratégiques sur les interlocuteurs (scraping LinkedIn + IA) et assistant conversationnel interne. Ce système permet de réduire significativement les tâches chronophages des commerciaux, avec un gain estimé à ~180 heures par an et par utilisateur. Pour un coût annuel de 663 EUR, la solution génère un ROI de +741 %, soit environ 7 EUR générés pour chaque euro investi, démontrant un fort impact business et opérationnel.
+          </p>
+
+          <h2 class="text-xl font-semibold mb-4">Réalisations</h2>
+          <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
+            <li>Conception du projet et réalisation de la maquette</li>
+            <li>Sélection des outils et choix des architectures techniques</li>
+            <li>Évaluation des coûts et du ROI du projet</li>
+            <li>Développement d'un modèle de machine learning pour identifier des magasins à fort potentiel par similarité avec les clients existants</li>
+            <li>Intégration d'API d'intelligence artificielle pour automatiser plusieurs fonctionnalités clés</li>
+            <li>Développement de la plateforme via des outils comme Cursor et Lovable</li>
+          </ul>
+
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-blue-800 mb-2">Résultat</h3>
+            <p class="text-blue-700">Solution déployée permettant d'économiser ~180 heures par commercial et par an, avec un ROI de +741 % dès la première année.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="text-center py-6 text-sm text-gray-500 bg-white mt-12">
+    © 2025 Moustapha LO. Tous droits réservés.
+  </footer>
+
+  <script>
+    (function () {
+      var images = [
+        "assets/img/BPIPE 1.PNG",
+        "assets/img/BPIPE 2.PNG",
+        "assets/img/BPIPE 3.PNG",
+        "assets/img/BPIPE 4.PNG",
+        "assets/img/BPIPE 5.PNG",
+        "assets/img/BPIPE 6.PNG"
+      ];
+      var currentIndex = 0;
+      var imageElement = document.getElementById("bpipe-carousel-image");
+      var prevButton = document.getElementById("bpipe-prev");
+      var nextButton = document.getElementById("bpipe-next");
+
+      function renderImage() {
+        imageElement.src = images[currentIndex];
+        imageElement.alt = "Interface B:PIPE - capture " + (currentIndex + 1);
+      }
+
+      prevButton.addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        renderImage();
+      });
+
+      nextButton.addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % images.length;
+        renderImage();
+      });
+    })();
+  </script>
+</body>
+</html>
